@@ -42,5 +42,8 @@
     casks = [ "nikitabobko/tap/aerospace" "cyberduck" "ghostty" ];
     taps = [ ];
     brews = [ "gh" "libomp" "cmake" "gcc" "llvm" "libssh2"];
+    masApps = {
+      "Windows App" = 1295203466;
+    };
   };
 }
