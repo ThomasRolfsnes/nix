@@ -13,6 +13,7 @@
                        htop
                        visidata
                        google-cloud-sdk
+                       dbeaver-bin
     ];
     systemPath = [ "/opt/homebrew/bin" ];
     pathsToLink = [ "/Applications" ];
