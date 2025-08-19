@@ -14,6 +14,9 @@
                        visidata
                        google-cloud-sdk
                        dbeaver-bin
+                       git-lfs
+                       gemini-cli
+                       jujutsu
     ];
     systemPath = [ "/opt/homebrew/bin" ];
     pathsToLink = [ "/Applications" ];
