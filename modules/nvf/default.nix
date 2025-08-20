@@ -40,9 +40,11 @@
           web-devicons.package = nvim-web-devicons;
         };
 
-        # LSP
+        lsp = {
+          enable = true;
+        };
+
         languages = {
-          enableLSP = true;
           enableTreesitter = true;
           python.enable = true;
           nix.enable = true;
@@ -93,11 +95,4 @@
       };
     };
   };
-  # config.vim.lazy.plugins = {
-  #     oil.nvim = {
-  #       # package = oil-nvim;
-  #       setupModule = "oil";
-  #     };
-  #   };
 }
-
