@@ -50,7 +50,18 @@
       };
     };
 
-
+    jujutsu = {
+      enable = true;
+      settings = {
+        user = {
+          email = "thomas.rolfsnes@egmont.com";
+          name = "Thomas Rolfsnes";
+        };
+        ui = {
+          editor = "nvim";
+        };
+      };
+    };
   };
 
   # programs.aerospace = {
