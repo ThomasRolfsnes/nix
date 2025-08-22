@@ -16,7 +16,6 @@
                        dbeaver-bin
                        git-lfs
                        gemini-cli
-                       jujutsu
                        lazyjj
     ];
     systemPath = [ "/opt/homebrew/bin" ];
