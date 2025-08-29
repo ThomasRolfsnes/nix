@@ -65,6 +65,14 @@
             mode = "n";
             silent = true;
             action = "<CMD>Telescope grep_string<CR>";}
+           {key = "<leader>d";
+            mode = "n";
+            silent = true;
+            action = "<CMD>Telescope lsp_definitions<CR>";}
+           {key = "<leader>r";
+            mode = "n";
+            silent = true;
+            action = "<CMD>Telescope lsp_references<CR>";}
         ];
 
         terminal = {
