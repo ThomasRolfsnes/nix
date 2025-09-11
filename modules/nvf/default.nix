@@ -61,10 +61,6 @@
             mode = "n";
             silent = false;
             action = "<CMD>Oil<CR>";}
-           {key = "<leader>f";
-            mode = "n";
-            silent = true;
-            action = "<CMD>Telescope grep_string<CR>";}
            {key = "<leader>d";
             mode = "n";
             silent = true;
@@ -73,6 +69,10 @@
             mode = "n";
             silent = true;
             action = "<CMD>Telescope lsp_references<CR>";}
+           {key = "<leader>f";
+            mode = "n";
+            silent = true;
+            action = "<CMD>Telescope lsp_document_symbols<CR>";}
         ];
 
         terminal = {
