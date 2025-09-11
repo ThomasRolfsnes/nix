@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./gemini.nix
+  ];
+
   # do not change
   home.stateVersion = "25.05";
   home.shell.enableZshIntegration = true;

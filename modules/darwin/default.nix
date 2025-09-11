@@ -15,7 +15,6 @@
                        google-cloud-sdk
                        dbeaver-bin
                        git-lfs
-                       gemini-cli
                        lazyjj
     ];
     systemPath = [ "/opt/homebrew/bin" ];
