@@ -3,6 +3,7 @@
 {
   imports = [
     ./gemini.nix
+    ./cursor.nix
   ];
 
   # do not change
