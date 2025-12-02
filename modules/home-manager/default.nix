@@ -19,6 +19,7 @@
 
     zsh.enable = true;
     lazygit.enable = true;
+    lazydocker.enable = true;
     neovim.enable = true;
     fzf.enable = true;
     zoxide.enable = true;
