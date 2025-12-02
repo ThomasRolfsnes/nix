@@ -32,6 +32,9 @@
                         view_options = {
                           -- Show files and directories that start with "."
                           show_hidden = true
+                        },
+                        keymaps = {
+                          ["<C-q>"] = { "actions.add_to_qflist", mode = "n" },
                         }
                       }
                     '';
