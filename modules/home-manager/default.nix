@@ -12,6 +12,14 @@
   home.sessionVariables = {
     TERMINAL = "bash";
   };
+  home.shellAliases = {
+    ll = "eza";       
+    la = "eza -lha";  
+    lt = "eza -T";       # tree
+    gs = "git status";   # Git status
+    ".. " = "cd ..";     # Navigate up one directory
+  };
+
 
   programs = {
     # Let Home Manager install and manage itself.
