@@ -50,10 +50,12 @@
 
     git = {
       enable = true;
-      userName = "Thomas Rolfsnes";
-      userEmail = "thomas.rolfsnes@egmont.com";
-      extraConfig = {
+      settings = {
         pull.rebase = true;
+        user = {
+          name = "Thomas Rolfsnes";
+          email = "thomas.rolfsnes@egmont.com";
+        };
       };
     };
 
