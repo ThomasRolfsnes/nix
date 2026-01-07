@@ -24,6 +24,8 @@
     fzf.enable = true;
     zoxide.enable = true;
 
+    eza.enable = true;
+
     direnv = {
       enable = true;
       enableZshIntegration = true;
