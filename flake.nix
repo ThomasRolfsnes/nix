@@ -60,6 +60,7 @@
             home-manager = {
               useUserPackages = true;
               useGlobalPkgs = true;
+              backupFileExtension = "homemanager.backup";
               users.${username} = import ./modules/home-manager;
             };
           }
