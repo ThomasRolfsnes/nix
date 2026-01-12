@@ -29,11 +29,13 @@
           shell = pkgs.zsh;
         };
 
-
         # disable default nix daemon since we've installed Nix via the Determinate installer
         nix.enable = false;
         # Necessary for using flakes on this system.
-        nix.settings.experimental-features = "nix-command flakes";
+        nix.settings = {
+          experimental-features = "nix-command flakes";
+          trusted-users = [ "root" "${username}" ];
+        };
         # Set Git commit hash for darwin-version.
         system.configurationRevision = self.rev or self.dirtyRev or null;
         # Used for backwards compatibility, please read the changelog before changing.
