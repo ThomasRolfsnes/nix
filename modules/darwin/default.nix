@@ -16,6 +16,7 @@
                        git-lfs
                        lazyjj
                        postman
+                       devenv
     ];
     systemPath = [ "/opt/homebrew/bin" ];
     pathsToLink = [ "/Applications" ];
