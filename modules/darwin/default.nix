@@ -5,9 +5,9 @@
                        iterm2
                        google-chrome
                        pulumi
-                       # cmake
-                       # gcc
-                       # openssl
+                       cmake
+                       gcc
+                       openssl
                        uv
                        htop
                        visidata
@@ -16,7 +16,8 @@
                        git-lfs
                        lazyjj
                        postman
-                       devenv
+                       ripgrep
+                       fd
     ];
     systemPath = [ "/opt/homebrew/bin" ];
     pathsToLink = [ "/Applications" ];
