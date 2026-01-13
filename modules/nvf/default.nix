@@ -35,6 +35,14 @@
                         },
                         keymaps = {
                           ["<C-q>"] = { "actions.add_to_qflist", mode = "n" },
+                          ["<C-f>"] = {
+                              callback = function()
+                                  require("telescope.builtin").live_grep({
+                                      cwd = require("oil").get_current_dir(),
+                                  })
+                              end,
+                              desc = "Telescope Live Grep in current Oil dir",
+                          },
                         }
                       }
                     '';
