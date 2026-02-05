@@ -18,6 +18,9 @@
                        postman
                        ripgrep
                        fd
+                       exiftool
+                       rclone
+                       logseq
     ];
     systemPath = [ "/opt/homebrew/bin" ];
     pathsToLink = [ "/Applications" ];
