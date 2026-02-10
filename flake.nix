@@ -51,8 +51,24 @@
       };
     in
       {
+
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .
+      darwinConfigurations.MAC-C02FM0HAQ6LT = nix-darwin.lib.darwinSystem {
+        modules = [ configuration
+          nvf.nixosModules.default
+          ./modules/darwin
+          ./modules/nvf
+          home-manager.darwinModules.home-manager {
+            home-manager = {
+              useUserPackages = true;
+              useGlobalPkgs = true;
+              backupCommand = "mv -f {} {}.bak";
+              users.${username} = import ./modules/home-manager;
+            };
+          }
+        ];
+      };
       darwinConfigurations.MAC-Y597GTC9Q3 = nix-darwin.lib.darwinSystem {
         modules = [ configuration
           nvf.nixosModules.default
