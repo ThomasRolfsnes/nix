@@ -7,6 +7,7 @@
                        pulumi
                        cmake
                        gcc
+                       llvm
                        openssl
                        uv
                        htop
@@ -49,6 +50,6 @@
     masApps = { };
     casks = [ "nikitabobko/tap/aerospace" "cyberduck" "ghostty" ];
     taps = [ ];
-    brews = [ "gh" "libomp" "cmake" "gcc" "llvm" "libssh2"];
+    brews = [ "gh" "libomp" "libssh2" ];  # cmake, gcc, llvm provided by nix
   };
 }
