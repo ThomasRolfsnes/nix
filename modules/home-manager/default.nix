@@ -37,6 +37,7 @@
     direnv = {
       enable = true;
       enableZshIntegration = true;
+      nix-direnv.enable = true;  # Faster direnv for nix environments
     };
 
     starship = {
@@ -66,6 +67,13 @@
       settings = {
         theme = "catppuccin-mocha";
       };
+    };
+    gh-dash = {
+      enable = true;
+    };
+
+    claude-code = {
+      enable = true;
     };
 
     jujutsu = {
