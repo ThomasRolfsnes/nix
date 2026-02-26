@@ -4,6 +4,7 @@
   imports = [
     ./gemini.nix
     ./cursor.nix
+    ./python.nix
   ];
 
   # do not change
