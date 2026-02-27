@@ -116,7 +116,7 @@
       enable = true;
       package = inputs.peon-ping.packages.${pkgs.system}.default;
       settings = {
-        default_pack = "glados";
+        default_pack = "peon";
         volume = 0.7;
         enabled = true;
         desktop_notifications = true;
@@ -129,8 +129,7 @@
           "user.spam" = true;
         };
       };
-      installPacks = [ "peon" "glados" "sc_kerrigan" ];
-      enableZshIntegration = true;
+enableZshIntegration = true;
     };
   };
 }
