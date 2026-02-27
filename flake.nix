@@ -16,9 +16,10 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     nvf.url = "github:notashelf/nvf";
     nvf.inputs.nixpkgs.follows = "nixpkgs";
+    peon-ping.url = "github:PeonPing/peon-ping";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nvf }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nvf, peon-ping }:
     let
       username = "roltho";
       configuration = { pkgs, ... }: { 
@@ -64,6 +65,7 @@
               useUserPackages = true;
               useGlobalPkgs = true;
               backupCommand = "mv -f {} {}.bak";
+              extraSpecialArgs = { inherit inputs; };
               users.${username} = import ./modules/home-manager;
             };
           }
@@ -79,6 +81,7 @@
               useUserPackages = true;
               useGlobalPkgs = true;
               backupCommand = "mv -f {} {}.bak";
+              extraSpecialArgs = { inherit inputs; };
               users.${username} = import ./modules/home-manager;
             };
           }
