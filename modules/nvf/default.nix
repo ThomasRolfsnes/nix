@@ -64,7 +64,8 @@
               lsp_fallback = true;
             };
             formatters_by_ft = {
-              sql = [ "sqlfmt" ];
+              sql = {};  # disable SQL formatting (breaks dbt/jinja)
+              python = [ "ruff_format" ];
             };
           };
         };
