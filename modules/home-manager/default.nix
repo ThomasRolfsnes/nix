@@ -5,6 +5,7 @@
     ./gemini.nix
     ./cursor.nix
     ./python.nix
+    ./peon-ping.nix
   ];
 
   # do not change
