@@ -64,7 +64,6 @@
               lsp_fallback = true;
             };
             formatters_by_ft = {
-              sql = {};  # disable SQL formatting (breaks dbt/jinja)
               python = [ "ruff_format" ];
             };
           };
@@ -74,7 +73,7 @@
           enableTreesitter = true;
           python.enable = true;
           nix.enable = true;
-          sql.enable = true;
+          sql.enable = false;
         };
 
         globals.mapleader = ",";
