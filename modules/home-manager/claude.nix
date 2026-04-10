@@ -114,7 +114,7 @@
 
     peon-ping = {
       enable = true;
-      package = inputs.peon-ping.packages.${pkgs.system}.default;
+      package = inputs.peon-ping.packages.${pkgs.stdenv.hostPlatform.system}.default;
       settings = {
         default_pack = "peon";
         volume = 0.7;
