@@ -22,6 +22,7 @@
                        exiftool
                        rclone
                        logseq
+                       putty
     ];
     systemPath = [ "/opt/homebrew/bin" ];
     pathsToLink = [ "/Applications" ];
