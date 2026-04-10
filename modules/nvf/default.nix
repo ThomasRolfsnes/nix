@@ -1,4 +1,7 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, lib, inputs, ... }:
+let
+  inherit (inputs.nvf.lib.nvim.dag) entryAnywhere;
+in {
   programs.nvf = {
     enable = true;
     settings = {
@@ -49,6 +52,19 @@
           };
           mini-icons.package = mini-icons;
           web-devicons.package = nvim-web-devicons;
+          pytest-nvim = {
+            package = pkgs.vimUtils.buildVimPlugin {
+              pname = "pytest-nvim";
+              version = "main";
+              src = pkgs.fetchFromGitHub {
+                owner = "richardhapb";
+                repo = "pytest.nvim";
+                rev = "main";
+                hash = "sha256-LF4eB8sgMXqUSCet13mdRRx/Ek1eiFpjiwPIYHCXOyk=";
+              };
+            };
+            setup = "require('pytest').setup()";
+          };
         };
 
         lsp = {
@@ -75,6 +91,8 @@
           nix.enable = true;
           sql.enable = false;
         };
+
+        treesitter.grammars = [ pkgs.vimPlugins.nvim-treesitter-parsers.xml ];
 
         globals.mapleader = ",";
         keymaps = [
