@@ -56,6 +56,7 @@
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .
       darwinConfigurations.MAC-C02FM0HAQ6LT = nix-darwin.lib.darwinSystem {
+        specialArgs = { inherit inputs; };
         modules = [ configuration
           nvf.nixosModules.default
           ./modules/darwin
@@ -72,6 +73,7 @@
         ];
       };
       darwinConfigurations.MAC-Y597GTC9Q3 = nix-darwin.lib.darwinSystem {
+        specialArgs = { inherit inputs; };
         modules = [ configuration
           nvf.nixosModules.default
           ./modules/darwin
