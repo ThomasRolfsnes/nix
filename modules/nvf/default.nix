@@ -104,10 +104,45 @@
           toggleterm = {
             enable = true;
             mappings.open = "<leader>t";
-            lazygit.enable = true;
-            lazygit.mappings.open = "<leader>fg";
+            lazygit.enable = false;  # Using custom lazygit with worktree support
           };
         };
+
+        luaConfigRC.lazygit-worktree = entryAnywhere ''
+          local Terminal = require('toggleterm.terminal').Terminal
+          local lazygit_newdir = vim.fn.expand("~/.lazygit/newdir")
+          local lazygit_term = nil
+
+          local function lazygit_toggle()
+            -- Always create a fresh terminal with the current directory
+            if lazygit_term then
+              lazygit_term:shutdown()
+            end
+            lazygit_term = Terminal:new({
+              cmd = "lazygit",
+              hidden = true,
+              direction = "float",
+              dir = vim.fn.getcwd(),
+              env = { LAZYGIT_NEW_DIR_FILE = lazygit_newdir },
+              on_exit = function(term, job, exit_code, name)
+                vim.schedule(function()
+                  if vim.fn.filereadable(lazygit_newdir) == 1 then
+                    local newdir = vim.fn.readfile(lazygit_newdir)[1]
+                    vim.fn.delete(lazygit_newdir)
+                    if newdir and newdir ~= vim.fn.getcwd() then
+                      vim.api.nvim_set_current_dir(newdir)
+                      vim.notify("Changed directory to: " .. newdir, vim.log.levels.INFO)
+                    end
+                  end
+                  lazygit_term = nil
+                end)
+              end
+            })
+            lazygit_term:toggle()
+          end
+
+          vim.keymap.set("n", "<leader>fg", lazygit_toggle, { noremap = true, silent = true, desc = "Toggle Lazygit" })
+        '';
 
         comments.comment-nvim = {
           enable = true;
