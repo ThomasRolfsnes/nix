@@ -6,6 +6,7 @@
     ./cursor.nix
     ./python.nix
     ./claude.nix
+    ./dbt-fusion.nix
   ];
 
   # do not change
