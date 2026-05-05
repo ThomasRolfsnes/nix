@@ -1,5 +1,5 @@
 run:
-	sudo nix run nix-darwin -- switch --flake .
+	sudo darwin-rebuild switch --flake .
 
 clean:
 	nix-collect-garbage --delete-older-than 30d
