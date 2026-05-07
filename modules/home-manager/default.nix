@@ -31,7 +31,11 @@
     zsh.enable = true;
     lazygit.enable = true;
     lazydocker.enable = true;
-    neovim.enable = true;
+    neovim = {
+      enable = true;
+      withRuby = false;
+      withPython3 = false;
+    };
     fzf.enable = true;
     zoxide.enable = true;
 
