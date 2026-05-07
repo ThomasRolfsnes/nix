@@ -51,6 +51,6 @@
     masApps = { };
     casks = [ "nikitabobko/tap/aerospace" "cyberduck" "ghostty" ];
     taps = [ ];
-    brews = [ "gh" "libomp" "libssh2" ];  # cmake, gcc, llvm provided by nix
+    brews = [ "libomp" "libssh2" ];  # cmake, gcc, llvm provided by nix
   };
 }

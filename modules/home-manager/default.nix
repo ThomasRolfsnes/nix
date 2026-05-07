@@ -71,9 +71,11 @@
         theme = "catppuccin-mocha";
       };
     };
-    gh-dash = {
+    gh = {
       enable = true;
+      extensions = [ pkgs.gh-dash ];
     };
+    gh-dash.enable = true;
 
     jujutsu = {
       enable = true;

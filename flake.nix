@@ -19,49 +19,64 @@
     peon-ping.url = "github:PeonPing/peon-ping";
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, nvf, peon-ping }:
+  outputs =
+    inputs@{
+      self,
+      nix-darwin,
+      nixpkgs,
+      home-manager,
+      nvf,
+      peon-ping,
+    }:
     let
       username = "roltho";
-      configuration = { pkgs, ... }: { 
+      configuration =
+        { pkgs, ... }:
+        {
 
-        programs.zsh.enable = true;
-        users.users.${username} = {
-          home = "/Users/${username}";
-          shell = pkgs.zsh;
+          programs.zsh.enable = true;
+          users.users.${username} = {
+            home = "/Users/${username}";
+            shell = pkgs.zsh;
+          };
+
+          # disable default nix daemon since we've installed Nix via the Determinate installer
+          nix.enable = false;
+          # Necessary for using flakes on this system.
+          nix.settings = {
+            experimental-features = "nix-command flakes";
+            trusted-users = [
+              "root"
+              "${username}"
+            ];
+          };
+          # Set Git commit hash for darwin-version.
+          system.configurationRevision = self.rev or self.dirtyRev or null;
+          # Used for backwards compatibility, please read the changelog before changing.
+          # $ darwin-rebuild changelog
+          system.stateVersion = 6;
+          # set primary user
+          system.primaryUser = "roltho";
+          # The platform the configuration will be used on.
+          nixpkgs.hostPlatform = "aarch64-darwin";
+          # allow installation of unfree software
+          nixpkgs.config.allowUnfree = true;
+
         };
-
-        # disable default nix daemon since we've installed Nix via the Determinate installer
-        nix.enable = false;
-        # Necessary for using flakes on this system.
-        nix.settings = {
-          experimental-features = "nix-command flakes";
-          trusted-users = [ "root" "${username}" ];
-        };
-        # Set Git commit hash for darwin-version.
-        system.configurationRevision = self.rev or self.dirtyRev or null;
-        # Used for backwards compatibility, please read the changelog before changing.
-        # $ darwin-rebuild changelog
-        system.stateVersion = 6;
-        # set primary user
-        system.primaryUser = "roltho";
-        # The platform the configuration will be used on.
-        nixpkgs.hostPlatform = "aarch64-darwin";
-        # allow installation of unfree software
-        nixpkgs.config.allowUnfree = true;
-
-      };
     in
-      {
+    {
 
       # Build darwin flake using:
       # $ darwin-rebuild build --flake .
       darwinConfigurations.MAC-C02FM0HAQ6LT = nix-darwin.lib.darwinSystem {
         specialArgs = { inherit inputs; };
-        modules = [ configuration
-          nvf.nixosModules.default
+        modules = [
+          configuration
+          nvf.darwinModules.default
           ./modules/darwin
           ./modules/nvf
-          home-manager.darwinModules.home-manager {
+          home-manager.darwinModules.home-manager
+          {
             home-manager = {
               useUserPackages = true;
               useGlobalPkgs = true;
@@ -74,11 +89,13 @@
       };
       darwinConfigurations.MAC-Y597GTC9Q3 = nix-darwin.lib.darwinSystem {
         specialArgs = { inherit inputs; };
-        modules = [ configuration
-          nvf.nixosModules.default
+        modules = [
+          configuration
+          nvf.darwinModules.default
           ./modules/darwin
           ./modules/nvf
-          home-manager.darwinModules.home-manager {
+          home-manager.darwinModules.home-manager
+          {
             home-manager = {
               useUserPackages = true;
               useGlobalPkgs = true;
