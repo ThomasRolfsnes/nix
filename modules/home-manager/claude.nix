@@ -1,17 +1,13 @@
 { pkgs, inputs, ... }:
 
+let
+  peon-pkg = inputs.peon-ping.packages.${pkgs.stdenv.hostPlatform.system}.default;
+  peon-bin = "${peon-pkg}/bin/peon";
+in
 {
   imports = [
     inputs.peon-ping.homeManagerModules.default
   ];
-
-  home.file.".claude/hooks/peon-ping/peon.sh" = {
-    executable = true;
-    text = ''
-      #!/usr/bin/env bash
-      exec peon "$@"
-    '';
-  };
 
   programs = {
     claude-code = {
@@ -24,7 +20,7 @@
               hooks = [
                 {
                   type = "command";
-                  command = "peon";
+                  command = peon-bin;
                   timeout = 10;
                 }
               ];
@@ -36,7 +32,7 @@
               hooks = [
                 {
                   type = "command";
-                  command = "peon";
+                  command = peon-bin;
                   timeout = 10;
                   async = true;
                 }
@@ -49,7 +45,7 @@
               hooks = [
                 {
                   type = "command";
-                  command = "peon";
+                  command = peon-bin;
                   timeout = 10;
                   async = true;
                 }
@@ -62,7 +58,7 @@
               hooks = [
                 {
                   type = "command";
-                  command = "peon";
+                  command = peon-bin;
                   timeout = 10;
                   async = true;
                 }
@@ -75,7 +71,7 @@
               hooks = [
                 {
                   type = "command";
-                  command = "peon";
+                  command = peon-bin;
                   timeout = 10;
                   async = true;
                 }
@@ -88,7 +84,7 @@
               hooks = [
                 {
                   type = "command";
-                  command = "peon";
+                  command = peon-bin;
                   timeout = 10;
                   async = true;
                 }
@@ -101,7 +97,7 @@
               hooks = [
                 {
                   type = "command";
-                  command = "peon";
+                  command = peon-bin;
                   timeout = 10;
                   async = true;
                 }
@@ -114,7 +110,7 @@
 
     peon-ping = {
       enable = true;
-      package = inputs.peon-ping.packages.${pkgs.stdenv.hostPlatform.system}.default;
+      package = peon-pkg;
       settings = {
         default_pack = "peon";
         volume = 0.7;
