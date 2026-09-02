@@ -12,6 +12,17 @@ in
   programs = {
     claude-code = {
       enable = true;
+      mcpServers = {
+        freecad = {
+          type = "stdio";
+          command = "uvx";
+          args = [ "freecad-mcp" ];
+        };
+        kubernetes-platform-docs = {
+          type = "http";
+          url = "https://mcp.tooling.egmont.io";
+        };
+      };
       marketplaces = {
         dagster = inputs.dagster-skills;
         pulumi-agent-skills = inputs.pulumi-agent-skills;
