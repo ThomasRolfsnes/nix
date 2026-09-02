@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   imports = [
@@ -18,11 +23,10 @@
   home.shellAliases = {
     ll = "eza";
     la = "eza -lha";
-    lt = "eza -T";       # tree
-    gs = "git status";   # Git status
-    ".. " = "cd ..";     # Navigate up one directory
+    lt = "eza -T"; # tree
+    gs = "git status"; # Git status
+    ".. " = "cd .."; # Navigate up one directory
   };
-
 
   programs = {
     # Let Home Manager install and manage itself.
@@ -44,15 +48,15 @@
     direnv = {
       enable = true;
       enableZshIntegration = true;
-      nix-direnv.enable = true;  # Faster direnv for nix environments
+      nix-direnv.enable = true; # Faster direnv for nix environments
     };
 
     starship = {
       enable = true;
       settings = {
-          add_newline = true;
-          format = "$directory$character";
-          right_format = "$shlvl$shell$username$hostname$nix_shell$git_branch$git_commit$git_state$git_status$jobs$python$cmd_duration";
+        add_newline = true;
+        format = "$directory$character";
+        right_format = "$shlvl$shell$username$hostname$nix_shell$git_branch$git_commit$git_state$git_status$jobs$python$cmd_duration";
       };
     };
 
@@ -99,7 +103,6 @@
   #   enable = true;
   #   userSettings.start-at-login = true;
   # };
-
 
   # reenable when updated to 6.0
   # services.ollama.enable = true;
