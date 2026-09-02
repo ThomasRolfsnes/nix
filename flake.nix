@@ -17,6 +17,14 @@
     nvf.url = "github:notashelf/nvf";
     nvf.inputs.nixpkgs.follows = "nixpkgs";
     peon-ping.url = "github:PeonPing/peon-ping";
+    pulumi-agent-skills = {
+      url = "github:pulumi/agent-skills";
+      flake = false;
+    };
+    dagster-skills = {
+      url = "github:dagster-io/skills";
+      flake = false;
+    };
   };
 
   outputs =
@@ -27,6 +35,8 @@
       home-manager,
       nvf,
       peon-ping,
+      pulumi-agent-skills,
+      dagster-skills,
     }:
     let
       username = "roltho";

@@ -12,7 +12,18 @@ in
   programs = {
     claude-code = {
       enable = true;
+      marketplaces = {
+        dagster = inputs.dagster-skills;
+        pulumi-agent-skills = inputs.pulumi-agent-skills;
+      };
       settings = {
+        effortLevel = "xhigh";
+        enabledPlugins = {
+          "dagster-expert@dagster" = true;
+          "pulumi-migration@pulumi-agent-skills" = true;
+          "pulumi-authoring@pulumi-agent-skills" = true;
+          "pulumi-delegation@pulumi-agent-skills" = true;
+        };
         hooks = {
           SessionStart = [
             {
