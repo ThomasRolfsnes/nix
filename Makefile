@@ -5,7 +5,7 @@ clean:
 	nix-collect-garbage --delete-older-than 30d
 	nix store optimise
 
-lock:
+update:
 	nix flake update
 
 
