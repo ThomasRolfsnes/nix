@@ -162,6 +162,31 @@ in {
           vim.keymap.set("n", "<leader>fg", lazygit_toggle, { noremap = true, silent = true, desc = "Toggle Lazygit" })
         '';
 
+        luaConfigRC.gh-dash = entryAnywhere ''
+          local Terminal = require('toggleterm.terminal').Terminal
+          local gh_dash_term = nil
+
+          local function gh_dash_toggle()
+            if gh_dash_term then
+              gh_dash_term:shutdown()
+            end
+            gh_dash_term = Terminal:new({
+              cmd = "gh dash",
+              hidden = true,
+              direction = "float",
+              dir = vim.fn.getcwd(),
+              on_exit = function(term, job, exit_code, name)
+                vim.schedule(function()
+                  gh_dash_term = nil
+                end)
+              end
+            })
+            gh_dash_term:toggle()
+          end
+
+          vim.keymap.set("n", "<leader>fd", gh_dash_toggle, { noremap = true, silent = true, desc = "Toggle gh dash" })
+        '';
+
         comments.comment-nvim = {
           enable = true;
         };
