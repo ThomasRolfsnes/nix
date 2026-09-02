@@ -5,6 +5,7 @@
                        iterm2
                        google-chrome
                        pulumi
+                       pulumiPackages.pulumi-python
                        cmake
                        gcc
                        llvm
@@ -13,6 +14,7 @@
                        htop
                        visidata
                        google-cloud-sdk
+                       azure-cli
                        dbeaver-bin
                        git-lfs
                        lazyjj
@@ -21,8 +23,9 @@
                        fd
                        exiftool
                        rclone
-                       logseq
                        putty
+                       k9s
+                       kubelogin-oidc
     ];
     systemPath = [ "/opt/homebrew/bin" ];
     pathsToLink = [ "/Applications" ];
@@ -49,7 +52,7 @@
     caskArgs.no_quarantine = true;
     global.brewfile = true;
     masApps = { };
-    casks = [ "nikitabobko/tap/aerospace" "cyberduck" "ghostty" ];
+    casks = [ "nikitabobko/tap/aerospace" "cyberduck" "ghostty" "freecad" ];
     taps = [ ];
     brews = [ "libomp" "libssh2" ];  # cmake, gcc, llvm provided by nix
   };
