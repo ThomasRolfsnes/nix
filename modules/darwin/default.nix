@@ -49,6 +49,7 @@
 
   homebrew = {
     enable = true;
+    onActivation.autoUpdate = true;
     caskArgs.no_quarantine = true;
     global.brewfile = true;
     masApps = { };
