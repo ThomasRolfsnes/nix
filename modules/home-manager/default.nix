@@ -7,7 +7,6 @@
 
 {
   imports = [
-    ./gemini.nix
     ./cursor.nix
     ./python.nix
     ./claude.nix
